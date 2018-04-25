@@ -17,6 +17,11 @@ let lastY = 0;
 function draw(event) {
   if (!isDrawing) return; // stop the function from running when mouse isn't clicked
   console.log(event);
+
+  ctx.beginPath();
+  ctx.moveTo(lastX, lastY);
+  ctx.lineTo(event.offsetX, event.offsetY);
+  ctx.stroke();
 }
 
 canvas.addEventListener("mousemove", draw);
