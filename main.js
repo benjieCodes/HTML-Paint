@@ -8,6 +8,7 @@ const ctx = canvas.getContext("2d");
 ctx.strokeStyle = "#BADA55";
 ctx.lineJoin = "round";
 ctx.lineCap = "round";
+ctx.lineWidth = 5;
 
 // property to switch between drawing and not drawing
 let isDrawing = false;
@@ -29,7 +30,10 @@ function draw(event) {
   [lastX, lastY] = [event.offsetX, event.offsetY];
 }
 
+canvas.addEventListener("mousedown", event => {
+  isDrawing = true;
+  [lastX, lastY] = [event.offsetX, event.offsetY];
+});
 canvas.addEventListener("mousemove", draw);
-canvas.addEventListener("mousedown", () => (isDrawing = true));
 canvas.addEventListener("mouseup", () => (isDrawing = false));
 canvas.addEventListener("mouseout", () => (isDrawing = false));
