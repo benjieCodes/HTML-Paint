@@ -19,9 +19,14 @@ function draw(event) {
   console.log(event);
 
   ctx.beginPath();
+
+  // start paint from
   ctx.moveTo(lastX, lastY);
+
+  // goes to
   ctx.lineTo(event.offsetX, event.offsetY);
   ctx.stroke();
+  [lastX, lastY] = [event.offsetX, event.offsetY];
 }
 
 canvas.addEventListener("mousemove", draw);
