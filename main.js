@@ -5,7 +5,6 @@ canvas.height = window.innerHeight;
 
 // medium and context of the board
 const ctx = canvas.getContext("2d");
-ctx.strokeStyle = "#BADA55";
 ctx.lineJoin = "round";
 ctx.lineCap = "round";
 ctx.lineWidth = 5;
@@ -14,11 +13,13 @@ ctx.lineWidth = 5;
 let isDrawing = false;
 let lastX = 0;
 let lastY = 0;
+let hue = 0;
 
 function draw(event) {
   if (!isDrawing) return; // stop the function from running when mouse isn't clicked
   console.log(event);
 
+  ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
   ctx.beginPath();
 
   // start paint from
@@ -28,6 +29,7 @@ function draw(event) {
   ctx.lineTo(event.offsetX, event.offsetY);
   ctx.stroke();
   [lastX, lastY] = [event.offsetX, event.offsetY];
+  hue++;
 }
 
 canvas.addEventListener("mousedown", event => {
