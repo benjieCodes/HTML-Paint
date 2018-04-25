@@ -1,5 +1,6 @@
 // painting board
 const canvas = document.querySelector("#paint");
+// sets size according to browser window
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
